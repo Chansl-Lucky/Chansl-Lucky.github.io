@@ -6,6 +6,7 @@ a{color:var(--link);text-decoration:none;text-underline-offset:4px}a:hover{text-
 p{margin:0 0 1.25em}strong{font-weight:700}h1,h2,h3,h4{line-height:1.25;margin:0 0 .8em;font-weight:500}h2{font-size:34px;letter-spacing:-.7px}h3{font-size:23px;letter-spacing:-.25px}
 .skip-link{position:fixed;top:-70px;left:20px;z-index:20;padding:8px 15px;background:#17202a;color:#fff}.skip-link:focus{top:10px}
 .site-header{max-width:1160px;margin:0 auto;padding:26px 0 23px;display:flex;align-items:center;justify-content:space-between;gap:30px;border-bottom:1px solid var(--line)}
+.brand span{display:block;font-family:var(--sans);font-size:10px;font-weight:500;line-height:1.4;letter-spacing:2px;color:var(--muted);margin-top:4px}
 .brand{font-family:var(--serif);font-size:25px;font-weight:600;letter-spacing:-.65px;white-space:nowrap;color:var(--ink)}.brand:hover{text-decoration:none;color:var(--link)}
 #nav{display:flex;gap:28px;align-items:center;flex-wrap:wrap;font-family:var(--sans);font-size:12px;letter-spacing:.15px}#nav a{color:#596473;padding:5px 0;border-bottom:1px solid transparent}#nav a:hover,#nav a.active,#nav a[aria-current="location"]{color:var(--link);text-decoration:none;border-bottom-color:var(--link)}
 #main{width:100%}.container{max-width:1160px;margin:0 auto;padding:64px 0}.container.hero{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:76px;padding-top:70px;padding-bottom:65px;align-items:start}
