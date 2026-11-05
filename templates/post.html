@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  $head
+</head>
+<body>
+$generated_marker
+<a class="skip-link" href="#main">Skip to content</a>
+$header
+<main id="main" class="page-shell article-page">
+  <a class="back-link" href="/blog/">← Back to Blog</a>
+  <article>
+    <header class="article-header">
+      <p class="kicker">RESEARCH NOTES</p>
+      <h1>$title</h1>
+      <p class="blog-intro">$summary</p>
+      <div class="article-meta"><a href="/">Shilian Chen</a><time datetime="$date">$human_date</time><span>$read_time min read</span></div>
+    </header>
+    $toc
+    <div class="article-body">$body</div>
+    <footer class="article-footer">
+      <a class="back-link" href="/blog/">← All posts</a>
+      <div class="article-share"><a href="$share_url" target="_blank" rel="noopener noreferrer">Share on X ↗</a><button type="button" data-copy-url="$canonical">Copy link</button><span class="copy-status" role="status" aria-live="polite"></span></div>
+    </footer>
+  </article>
+  $author_block
+</main>
+$footer
+</body>
+</html>

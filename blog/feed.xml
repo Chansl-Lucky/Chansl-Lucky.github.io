@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Shilian Chen — Blog</title>
+    <link>https://chansl-lucky.github.io/blog/</link>
+    <description>Ideas on recursive self-improvement, continual learning, and intelligence in the real world.</description>
+    <language>en</language>
+    <atom:link href="https://chansl-lucky.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

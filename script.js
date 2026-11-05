@@ -1,49 +1,96 @@
 'use strict';
-const articles = [...document.querySelectorAll('.publication')];
+
+// Progressive enhancement: all publication and news content works without JS.
+const publications = [...document.querySelectorAll('.publication')];
 const filters = [...document.querySelectorAll('[data-filter]')];
-const status = document.querySelector('.result-count');
+const resultCount = document.querySelector('.result-count');
 function setFilter(value) {
   let count = 0;
-  articles.forEach(article => {
-    const visible = value === 'all' || article.dataset.type === value;
-    article.hidden = !visible;
-    if (visible) count += 1;
+  publications.forEach(publication => {
+    const visible = value === 'all' || publication.dataset.type === value;
+    publication.hidden = !visible;
+    count += Number(visible);
   });
   filters.forEach(button => {
     const selected = button.dataset.filter === value;
     button.classList.toggle('active', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
-  status.textContent = `${count} ${count === 1 ? 'work' : 'works'}`;
+  if (resultCount) resultCount.textContent = `${count} ${count === 1 ? 'work' : 'works'}`;
 }
-filters.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
-document.querySelector('.publication-tools').hidden = false;
-// News links remain usable even when a publication filter has hidden their target.
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', () => {
-    const target = document.getElementById(link.hash.slice(1));
-    if (target && target.classList.contains('publication') && target.hidden) setFilter('all');
-  });
-});
-function revealHashTarget() {
-  const target = document.getElementById(location.hash.slice(1));
-  if (target && target.classList.contains('publication') && target.hidden) {
-    setFilter('all');
-    target.scrollIntoView();
+if (filters.length) {
+  document.querySelector('.publication-tools').hidden = false;
+  filters.forEach(button => button.addEventListener('click', () => setFilter(button.dataset.filter)));
+}
+
+function hashTarget(hash) {
+  try { return document.getElementById(decodeURIComponent(hash.slice(1))); }
+  catch { return null; }
+}
+function revealPublication(hash) {
+  const target = hashTarget(hash);
+  if (target?.classList.contains('publication') && target.hidden) setFilter('all');
+  return target;
+}
+document.querySelectorAll('a[href]').forEach(link => {
+  const url = new URL(link.href);
+  if (url.origin === location.origin && url.pathname === location.pathname && url.hash) {
+    link.addEventListener('click', () => revealPublication(url.hash));
   }
-}
-window.addEventListener('hashchange', revealHashTarget);
+});
+window.addEventListener('hashchange', () => revealPublication(location.hash));
+revealPublication(location.hash);
+
+// The blog link is a real page, while homepage links follow visible sections.
 const navLinks = [...document.querySelectorAll('#nav a')];
-if ('IntersectionObserver' in window) {
+const sectionLinks = navLinks.filter(link => link.origin === location.origin && link.pathname === location.pathname && hashTarget(link.hash));
+if ('IntersectionObserver' in window && sectionLinks.length) {
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) navLinks.forEach(link => {
-        const active = link.hash === `#${entry.target.id}`;
-        link.classList.toggle('active', active);
-        if (active) link.setAttribute('aria-current', 'location');
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      sectionLinks.forEach(link => {
+        const selected = link.hash === `#${entry.target.id}`;
+        link.classList.toggle('active', selected);
+        if (selected) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       });
-    });
-  }, {rootMargin:'-100px 0px -65% 0px', threshold:0});
-  navLinks.forEach(link => observer.observe(document.querySelector(link.hash)));
+    }
+  }, { rootMargin: '-40px 0px -65% 0px', threshold: 0 });
+  sectionLinks.forEach(link => observer.observe(hashTarget(link.hash)));
 }
+
+const newsWindow = document.getElementById('news-window');
+const newsToggle = document.getElementById('news-toggle');
+const newsHint = document.getElementById('news-hint');
+if (newsWindow && newsToggle) {
+  const updateNews = () => {
+    const expanded = newsToggle.getAttribute('aria-expanded') === 'true';
+    const overflowing = newsWindow.scrollHeight > newsWindow.clientHeight + 2;
+    newsToggle.hidden = !expanded && !overflowing;
+    if (newsHint) newsHint.hidden = expanded || !overflowing || newsWindow.scrollTop + newsWindow.clientHeight >= newsWindow.scrollHeight - 3;
+  };
+  newsToggle.addEventListener('click', () => {
+    const expanded = newsToggle.getAttribute('aria-expanded') !== 'true';
+    newsToggle.setAttribute('aria-expanded', String(expanded));
+    newsToggle.textContent = expanded ? 'Show less' : 'Show all news';
+    newsWindow.classList.toggle('is-expanded', expanded);
+    updateNews();
+  });
+  newsWindow.addEventListener('scroll', updateNews, { passive: true });
+  window.addEventListener('resize', updateNews, { passive: true });
+  updateNews();
+}
+
+// Article links are only copied after a visitor chooses the action.
+document.querySelectorAll('[data-copy-url]').forEach(button => {
+  button.addEventListener('click', async () => {
+    const original = button.textContent;
+    try {
+      await navigator.clipboard.writeText(button.dataset.copyUrl || location.href);
+      button.textContent = 'Link copied';
+    } catch {
+      button.textContent = 'Copy the URL from your address bar';
+    }
+    window.setTimeout(() => { button.textContent = original; }, 2500);
+  });
+});
