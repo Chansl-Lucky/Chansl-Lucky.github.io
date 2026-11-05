@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "slug": "toward-agents-that-keep-improving",
+    "title": "Toward Agents That Keep Improving",
+    "date": "2026-11-05",
+    "summary": "A new chapter at ECNU, experiences at Trip.com and Green Valley, and the questions behind our work on continual self-improvement.",
+    "body": "content/articles/toward-agents-that-keep-improving.html",
+    "image": "/assets/blog/self-improvement.svg",
+    "tags": [
+      "Research direction",
+      "Real-world agents"
+    ],
+    "published": true
+  },
+  {
+    "slug": "model-expertise-should-travel",
+    "title": "Model Expertise Should Travel",
+    "date": "2026-11-05",
+    "summary": "Two routes to reusable model expertise: crossing architectural boundaries with HeteroFusion and access boundaries with Evo-Merging.",
+    "body": "content/articles/model-expertise-should-travel.html",
+    "image": "/assets/blog/model-fusion.svg",
+    "tags": [
+      "Model fusion",
+      "EMNLP 2026"
+    ],
+    "published": true
+  },
+  {
+    "slug": "learning-without-losing-what-matters",
+    "title": "Learning Without Losing What Matters",
+    "date": "2026-11-05",
+    "summary": "PeCL and LifeAlign examine two sides of learning over time: protecting sensitive knowledge and adapting to changing preferences.",
+    "body": "content/articles/learning-without-losing-what-matters.html",
+    "image": "/assets/blog/continual-learning.svg",
+    "tags": [
+      "Continual learning",
+      "Alignment"
+    ],
+    "published": true
+  },
+  {
+    "slug": "eduskillbench-when-skills-help",
+    "title": "EduSkillBench: When Do Skills Actually Help?",
+    "date": "2026-11-05",
+    "summary": "Reusable instructions promise more capable agents. EduSkillBench asks when that promise survives a controlled comparison.",
+    "body": "content/articles/eduskillbench-when-skills-help.html",
+    "image": "/assets/blog/skill-evaluation.svg",
+    "tags": [
+      "Agent evaluation",
+      "Research update"
+    ],
+    "published": true
+  },
+  {
+    "slug": "beyond-longer-reasoning",
+    "title": "Beyond Longer Reasoning",
+    "date": "2026-11-05",
+    "summary": "A reading guide to our survey of reinforcement learning, test-time scaling, and structured reasoning in language models.",
+    "body": "content/articles/beyond-longer-reasoning.html",
+    "image": "/assets/blog/reasoning.svg",
+    "tags": [
+      "Reasoning",
+      "Survey"
+    ],
+    "published": true
+  }
+]

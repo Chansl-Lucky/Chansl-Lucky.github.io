@@ -6,5 +6,50 @@
     <description>Ideas on recursive self-improvement, continual learning, and intelligence in the real world.</description>
     <language>en</language>
     <atom:link href="https://chansl-lucky.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Toward Agents That Keep Improving</title>
+      <link>https://chansl-lucky.github.io/blog/toward-agents-that-keep-improving/</link>
+      <description>A new chapter at ECNU, experiences at Trip.com and Green Valley, and the questions behind our work on continual self-improvement.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://chansl-lucky.github.io/blog/toward-agents-that-keep-improving/</guid>
+      <category>Research direction</category>
+      <category>Real-world agents</category>
+    </item>
+    <item>
+      <title>Model Expertise Should Travel</title>
+      <link>https://chansl-lucky.github.io/blog/model-expertise-should-travel/</link>
+      <description>Two routes to reusable model expertise: crossing architectural boundaries with HeteroFusion and access boundaries with Evo-Merging.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://chansl-lucky.github.io/blog/model-expertise-should-travel/</guid>
+      <category>Model fusion</category>
+      <category>EMNLP 2026</category>
+    </item>
+    <item>
+      <title>Learning Without Losing What Matters</title>
+      <link>https://chansl-lucky.github.io/blog/learning-without-losing-what-matters/</link>
+      <description>PeCL and LifeAlign examine two sides of learning over time: protecting sensitive knowledge and adapting to changing preferences.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://chansl-lucky.github.io/blog/learning-without-losing-what-matters/</guid>
+      <category>Continual learning</category>
+      <category>Alignment</category>
+    </item>
+    <item>
+      <title>EduSkillBench: When Do Skills Actually Help?</title>
+      <link>https://chansl-lucky.github.io/blog/eduskillbench-when-skills-help/</link>
+      <description>Reusable instructions promise more capable agents. EduSkillBench asks when that promise survives a controlled comparison.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://chansl-lucky.github.io/blog/eduskillbench-when-skills-help/</guid>
+      <category>Agent evaluation</category>
+      <category>Research update</category>
+    </item>
+    <item>
+      <title>Beyond Longer Reasoning</title>
+      <link>https://chansl-lucky.github.io/blog/beyond-longer-reasoning/</link>
+      <description>A reading guide to our survey of reinforcement learning, test-time scaling, and structured reasoning in language models.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://chansl-lucky.github.io/blog/beyond-longer-reasoning/</guid>
+      <category>Reasoning</category>
+      <category>Survey</category>
+    </item>
   </channel>
 </rss>

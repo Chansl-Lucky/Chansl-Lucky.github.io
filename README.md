@@ -1,6 +1,6 @@
 # Shilian Chen — Homepage and Blog
 
-The public site is hosted by the existing **Chansl-Lucky** GitHub account at <https://chansl-lucky.github.io/>. The blog lives at `/blog/`; no new platform account is needed. There are no published posts yet.
+The public site is hosted by the existing **Chansl-Lucky** GitHub account at <https://chansl-lucky.github.io/>. The blog lives at `/blog/`; no new platform account is needed. The first five research notes expand on public News updates; article dates record their actual publication date, separately from the events discussed.
 
 ## Publish an article
 
@@ -37,5 +37,6 @@ python3 scripts/build_blog.py
 - Edit the shared header/footer in `index.html` between the `SITE_HEADER_START` / `SITE_HEADER_END` and `SITE_FOOTER_START` / `SITE_FOOTER_END` comments, then rebuild. Blog pages use root-relative links and highlight the Blog navigation item.
 - Edit `templates/post.html` for the article layout and `style.css` / `script.js` for the shared design and interactions. Do not hand-edit generated `blog/index.html`, article pages, `blog/feed.xml`, or `sitemap.xml`.
 - The builder adds a table of contents when an article has at least two `<h2>` headings, estimates reading time, and updates RSS and sitemap entries. Removing a published entry removes its generated article page on the next build.
+- Posts are ordered by publication date; entries sharing a date keep their order in `content/posts.json`. Optional images appear on the index and article page. SVG illustrations use the profile photo as a raster fallback in social cards.
 - `/blog/feed.xml` is a public RSS feed for feed readers. There is no email subscription service.
 - To inspect output without changing the published files, use `python3 scripts/build_blog.py --output-dir /tmp/shilian-blog-preview`. That directory contains generated HTML/XML only; shared styles, scripts, and images remain in the repository.

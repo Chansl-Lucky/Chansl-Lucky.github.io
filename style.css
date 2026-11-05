@@ -212,6 +212,9 @@ button.section-link:hover { color: var(--blue-dark); text-decoration: underline;
 .article-header h1 { font-size: 38px; line-height: 1.25; margin: 0 0 16px; }
 .article-meta { display: flex; flex-wrap: wrap; gap: 5px 16px; }
 .article-header .article-meta { margin-top: 18px; }
+.article-hero { max-width: 640px; margin: 0 0 30px; }
+.article-hero img { display: block; width: 100%; border-radius: 8px; }
+.article-hero figcaption { color: var(--muted); font-size: 11px; margin-top: 7px; }
 .article-body { max-width: 780px; font-size: 17px; line-height: 1.8; overflow-wrap: break-word; }
 .article-body h2 { font-size: 27px; margin: 1.8em 0 .7em; }
 .article-body h3 { font-size: 21px; margin: 1.6em 0 .6em; }

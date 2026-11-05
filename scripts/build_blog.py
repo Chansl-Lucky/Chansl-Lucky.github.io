@@ -249,11 +249,13 @@ def load_posts() -> list[dict]:
         parsed = ArticleMarkup(body_path.read_text(encoding="utf-8"))
         posts.append({**entry, "tags": tags, "parsed": parsed, "url": absolute(f"/blog/{slug}/"),
                       "read_time": max(1, math.ceil(len(parsed.words) / 220))})
-    return sorted(posts, key=lambda item: (item["date"], item["slug"]), reverse=True)
+    # Keep editorial order from posts.json when multiple articles share a date.
+    return sorted(posts, key=lambda item: item["date"], reverse=True)
 
 
 def page_head(title: str, description: str, path: str, schema: dict, image_path=None, article_date=None):
-    image_url = absolute(image_path or "/assets/shilian-chen.png")
+    # Social cards require raster images; conceptual SVGs remain on the site.
+    image_url = absolute(image_path if image_path and not image_path.endswith(".svg") else "/assets/shilian-chen.png")
     article_meta = f'\n  <meta property="article:published_time" content="{text(article_date)}">' if article_date else ""
     return f'''<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -347,13 +349,15 @@ def article_page(post: dict, header: str, footer: str, template: Template) -> st
         items = ''.join(f'<li><a href="#{text(quote(anchor, safe="-_.~"))}">{text(label)}</a></li>' for anchor, label in headings)
         toc = f'<nav class="article-toc" aria-label="Table of contents"><h2>On this page</h2><ol>{items}</ol></nav>'
     share = "https://twitter.com/intent/tweet?" + urlencode({"text": post["title"], "url": post["url"]})
+    hero = (f'<figure class="article-hero"><img src="{text(post["image"])}" alt="Conceptual overview: {text(post["title"])}" width="640" height="360">'
+            '<figcaption>Conceptual illustration.</figcaption></figure>' if post.get("image") else "")
     return template.substitute(
         generated_marker=GENERATED_MARKER, header=header, footer=footer,
         head=page_head(post["title"] + " — Shilian Chen", post["summary"], f'/blog/{post["slug"]}/',
                        schema, post.get("image"), post["date"]),
         title=text(post["title"]), summary=text(post["summary"]), date=post["date"],
         human_date=human_date(post["date"]), read_time=post["read_time"], toc=toc,
-        body=post["parsed"].body, share_url=text(share), canonical=text(post["url"]),
+        body=post["parsed"].body, hero=hero, share_url=text(share), canonical=text(post["url"]),
         author_block=author_block(),
     )
 

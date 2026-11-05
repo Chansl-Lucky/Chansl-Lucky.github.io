@@ -1,0 +1,26 @@
+<p>Useful expertise is spread across a growing ecosystem of language models. One model may bring a different training history, another a useful specialization, and another a capability available only through a service. My interest is in making that expertise transferable: how can we build on what models already know when their architectures, representations, or access conditions differ?</p>
+
+<p>Two of our projects approach this question from different directions: HeteroFusion, published at EMNLP 2026, and our Evo-Merging preprint.</p>
+
+<h2>Crossing architectural boundaries</h2>
+<p>Model merging becomes difficult when useful experts do not share a compatible backbone. Tensor coordinates that look similar need not describe the same function, and architectural differences make direct combinations unreliable.</p>
+
+<p>In <a href="https://aclanthology.org/2026.emnlp-main.939/">HeteroFusion</a>, we approach transfer through functional module structure. Topology-based alignment connects heterogeneous backbones, while conflict-aware denoising reduces incompatible transfer signals. A small replay set helps optimize the transfer operators. This gives us a way to reason about what should move between models, alongside how to represent that transfer in the target.</p>
+
+<p>Our experiments examine heterogeneous transfer, multi-source fusion, noisy sources, and generalization across model families. The broader question behind these settings is straightforward: can a target model benefit from another model's expertise even when their internal organization differs? The paper develops and evaluates a concrete approach to that problem.</p>
+
+<h2>Working through the API boundary</h2>
+<p>A separate constraint arises when model parameters are unavailable. In a language-model-as-a-service setting, a method must work with the interface the service actually exposes.</p>
+
+<p>Our <a href="https://arxiv.org/abs/2509.12951">Evo-Merging preprint</a> studies black-box model merging using inference-time API queries. We use derivative-free evolutionary optimization, with sparsity-based denoising to filter redundant or irrelevant information and sign-aware scaling to determine how relevant model contributions are combined.</p>
+
+<p>This shifts the optimization problem toward information available through queries. It does not require access to hidden model weights. The work asks how to combine expertise under that access constraint, and evaluates the proposed framework against strong baselines. It remains an arXiv preprint.</p>
+
+<h2>Expertise as something we can build on</h2>
+<p>I see these projects as complementary parts of a larger research agenda. HeteroFusion addresses compatibility between different model structures; Evo-Merging addresses restricted access to model internals. Each makes a different assumption explicit and asks what useful composition remains possible.</p>
+
+<p>For continually improving agents, this raises an appealing design question: when new expertise becomes available, how should a system incorporate it? My view is that the answer should account for compatibility, conflicting knowledge, and the cost of obtaining evidence about a source. A richer collection of models creates an opportunity; turning it into reliable capability requires a principled transfer mechanism.</p>
+
+<p>That is the direction I want to keep exploring: making expertise reusable across the boundaries that separate today's models.</p>
+
+<p><strong>Read the work:</strong> <a href="https://aclanthology.org/2026.emnlp-main.939/">HeteroFusion paper</a> · <a href="https://github.com/ECNU-ICALK/HeteroFusion">HeteroFusion code</a> · <a href="https://arxiv.org/abs/2509.12951">Evo-Merging preprint</a> · <a href="https://github.com/Chansl-Lucky/Black-Box-Merging">Evo-Merging code and supplement</a>.</p>
